@@ -1,21 +1,29 @@
-// Modules and Global Variables
+// Dependencies
+const express = require('express');
+// const morgan = require('morgan');
+
+//Configure express
 require('dotenv').config();
-const express = require('express')
-const app = express()
+const app = express();
+
+// app.use(morgan('tiny'));
 
 //Express Middleware
 app.set('views, __dirname + /views')
 app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
 app.use(express.static('public'))
+app.use(express.urlencoded({ extended: true }))
 
-//Controllers & Routes
-app.use('/places', require('./controllers/places'))
-
+//Routes
 app.get('/', (req, res) => {
     res.render('home')
 })
 
+//Controllers & Routes
+app.use('/places', require('./controllers/places.js'))
+
+//404 Error
 app.get('*', (req, res) => {
     res.render('error404')
 })
