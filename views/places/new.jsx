@@ -14,7 +14,8 @@ function new_form() {
                         <label htmlFor='name' >Place Name : </label>
                         <input
                             className="form-control"
-                            id="name" type="text"
+                            id="name" 
+                            type="text"
                             name="name"
                             required
                         />

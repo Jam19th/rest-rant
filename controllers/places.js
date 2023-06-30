@@ -44,7 +44,6 @@ router.post('/', (req, res) => {
     res.redirect('/places')
 })
 
-
 //GET /places/:id/edit
 router.get('/:id/edit', (req, res) => {
     let id = Number(req.params.id)
@@ -69,9 +68,10 @@ router.put('/:id', (req, res) => {
         res.render('error404')
     }
     else {
-        //Dig into req.body and make sure data is valid
+        // Dig into req.body and make sure data is valid
         if (!req.body.pic) {
-            req.body.pic = 'https://placekitten.com/400/400'
+            // Default image if one is not provided
+            req.body.pic = 'http://placekitten.com/400/400'
         }
         if (!req.body.city) {
             req.body.city = 'Anytown'
@@ -80,11 +80,12 @@ router.put('/:id', (req, res) => {
             req.body.state = 'USA'
         }
 
-        //Save the new data into places[id]
+        // Save the new data into places[id]
         places[id] = req.body
         res.redirect(`/places/${id}`)
     }
 })
+
 
 //Delete /places/:id
 router.delete('/:id', (req, res) => {
