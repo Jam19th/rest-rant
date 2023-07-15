@@ -14,7 +14,7 @@ function new_form() {
                         <label htmlFor='name' >Place Name : </label>
                         <input
                             className="form-control"
-                            id="name" 
+                            id="name"
                             type="text"
                             name="name"
                             required
@@ -56,6 +56,14 @@ function new_form() {
                             name="cuisines"
                             required
                         />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor='founded' >Founded Year: </label>
+                        <input
+                            className="form-control"
+                            id="founded"
+                            type="number"
+                            name="founded" />
                     </div>
                     <input
                         className='btn btn-primary'
