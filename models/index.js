@@ -9,3 +9,4 @@ mongoose.connect(process.env.MONGO_URI, {
 
 //export the model
 module.exports.Place = require('./places.js');
+module.exports.Comment = require('./comment.js');

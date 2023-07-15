@@ -5,20 +5,18 @@ function new_form(data) {
     let message = ''
     if (data.message) {
         message = (
-            <div className="alert alert-danger" role="alert">
+            <div className="alert-danger">
                 {data.message}
             </div>
         )
-    } 
+    }
     return (
         <Def>
             <main>
                 <h1>Add a New Place</h1>
                 {message}
-                {/* <div className="newButton" >
-                    <a href="/places"><button>Go back to the index</button></a>
-                </div> */}
-                    <form action="/places" method="POST">
+                <form action="/places" method="POST">
+                    <div className="row">
                         <div className="form-group col-sm-6 col-md-4 col-lg-3">
                             <label htmlFor='name' >Place Name : </label>
                             <input
@@ -38,6 +36,8 @@ function new_form(data) {
                                 name="pic"
                             />
                         </div>
+                    </div>
+                    <div className="row">
                         <div className="form-group col-sm-6 col-md-4 col-lg-3">
                             <label htmlFor='city' >City : </label>
                             <input
@@ -56,6 +56,8 @@ function new_form(data) {
                                 name="state"
                             />
                         </div>
+                    </div>
+                    <div className="row">
                         <div className="form-group col-sm-6 col-md-4 col-lg-3">
                             <label htmlFor='cuisines' >Cuisines : </label>
                             <input
@@ -72,19 +74,20 @@ function new_form(data) {
                                 className="form-control"
                                 id="founded"
                                 type="number"
-                                name="founded" 
+                                name="founded"
                                 value={new Date().getFullYear()}
-                                />
+                            />
                         </div>
-                        <input
-                            className='btn btn-primary'
-                            id="submit"
-                            type="submit"
-                            value="Add Place"
-                        />
-                    </form>
+                    </div>
+                    <input
+                        className='btn btn-primary'
+                        id="submit"
+                        type="submit"
+                        value="Add Place"
+                    />
+                </form>
             </main>
-        </Def>
+        </Def >
     )
 }
 
