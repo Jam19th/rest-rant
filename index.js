@@ -1,10 +1,7 @@
 // Dependencies
-const express = require('express');
-// const morgan = require('morgan');
-const methodOverride = require('method-override');
-
-//Configure express
 require('dotenv').config();
+const express = require('express');
+const methodOverride = require('method-override');
 const app = express();
 
 // app.use(morgan('tiny'));

@@ -15,19 +15,6 @@ router.get('/', (req, res) => {
         })
 })
 
-// Create Route
-router.post('/', (req, res) => {
-    db.Place.create(req.body)
-        .then(() => {
-            res.redirect('/places')
-        })
-        .catch(err => {
-            console.log('err', err)
-            res.render('error404')
-        })
-})
-
-
 // New Route
 router.get('/new', (req, res) => {
     res.render('places/new')
@@ -36,12 +23,41 @@ router.get('/new', (req, res) => {
 // Show Route
 router.get('/:id', (req, res) => {
     db.Place.findById(req.params.id)
-        .then(place => {
-            res.render('places/show', { place })
+    .then(place => {
+        res.render('places/show', { place })
+    })
+    .catch(err => {
+        console.log('err', err)
+        res.render('error404')
+    })
+})
+
+
+
+// Create Route
+router.post('/', (req, res) => {
+    if (!req.body.pic) {
+        // If no pic is provided, use a default
+        req.body.pic = 'https://placekitten.com/400/400'
+    }
+
+    db.Place.create(req.body)
+        .then(() => {
+            res.redirect('/places')
         })
         .catch(err => {
-            console.log('err', err)
-            res.render('error404')
+            if (err.name === 'ValidationError') {
+                let message = 'Validation Error: '
+                for ( var field in err.errors) {
+                    message += `${field} was ${err.errors[field].value}.`
+                    message += `${err.errors[field].message}}`
+                }
+                console.log('Validation error message' ,message)
+                res.render('places/new', { message })
+            }
+            else {
+                res.render('error404')
+            }
         })
 })
 
