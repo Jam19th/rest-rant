@@ -10,7 +10,7 @@ function edit_form(data) {
                 {/* <div className="newButton" >
                     <a href="/places"><button>Go back to the index</button></a>
                 </div> */}
-                <form method="POST" action={`/places/${data.id}?_method=PUT`}>
+                <form method="POST" action={`/places/${data.place.id}?_method=PUT`}>
                     <div className="row">
                         <div className="form-group col-sm-6">
                             <label htmlFor='name' >Place Name : </label>
@@ -63,13 +63,22 @@ function edit_form(data) {
                                 required
                             />
                         </div>
-                    </div>
+                        <div className="form-group col-sm-6">
+                            <label htmlFor='founded' >Founded : </label>
+                            <input
+                                className="form-control"
+                                id="founded"
+                                name="founded"
+                                value={data.place.founded}
+                            />
+                        </div>
                         <input
                             className='btn btn-primary'
                             id="submit"
                             type="submit"
                             value="Add Place"
                         />
+                    </div>
                 </form>
             </main>
         </Def>

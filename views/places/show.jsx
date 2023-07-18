@@ -7,6 +7,11 @@ function show(data) {
             no comments yet!
         </h3>
     )
+    let rating = (
+        <h3 className="inactive">
+            no ratings yet!
+        </h3>
+    )
     if (data.place.comments.length) {
         let sumRatings = data.place.comments.reduce((tot, c) => {
             return tot + c.stars
